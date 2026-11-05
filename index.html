@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supplier &amp; Supplier Information (SIM) Data Sync</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="topbar">
+    <form class="global-search" role="search" onsubmit="return false">
+      <input type="text" placeholder="What do you need?" aria-label="What do you need?">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#555" d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
+    </form>
+    <div class="topbar-actions">
+      <span class="avatar" title="Profile">CB</span>
+      <button class="round-btn" aria-label="Notifications"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#333" d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm6-6v-5c0-3.1-1.6-5.6-4.5-6.3V4a1.5 1.5 0 0 0-3 0v.7C7.6 5.4 6 7.9 6 11v5l-2 2v1h16v-1l-2-2z"/></svg></button>
+      <button class="round-btn" aria-label="Cart"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#333" d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM1 2v2h2l3.6 7.6-1.4 2.4A2 2 0 0 0 7 17h12v-2H7.4l1.1-2h7.5a2 2 0 0 0 1.8-1l3.6-6.5A1 1 0 0 0 20.5 4H5.2l-.9-2H1zm16 16a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg><span class="badge">0</span></button>
+      <button class="round-btn dark" aria-label="Tasks"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#fff" d="M9.5 16.2 5.8 12.5l1.4-1.4 2.3 2.3 7.3-7.3 1.4 1.4z"/></svg></button>
+      <button class="round-btn" aria-label="Help"><b>?</b></button>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Main">
+    <a class="home" href="#" aria-label="Home"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#333" d="M12 3 1 12h3v9h6v-6h4v6h6v-9h3z"/></svg></a>
+    <a href="#">Expenses</a>
+    <a href="#">Forecasts</a>
+    <a href="#">Requests</a>
+    <a href="#">Orders</a>
+    <a href="#">Contingent Workforce</a>
+    <a href="#">Invoices</a>
+    <a href="#">Payments</a>
+    <a href="#">Agent Studio</a>
+    <a href="#">Spend Guard</a>
+    <a href="#" class="active" aria-current="page">Setup</a>
+    <a href="#">More...</a>
+  </nav>
+
+  <nav class="sub-nav" aria-label="Setup">
+    <a href="#">All Setup Items</a>
+    <a href="#">Company Info</a>
+    <a href="#">Accounts</a>
+    <a href="#">Users</a>
+    <a href="#">Approvals</a>
+    <a href="#">Budget Periods</a>
+    <a href="#">Budget Lines</a>
+  </nav>
+
+  <main id="main" class="page">
+    <h1>Supplier &amp; Supplier Information (SIM) Data Sync</h1>
+    <p class="note">To disable field mapping for custom fields, please navigate to the Custom Field setup page and de-select the 'Defaults From' selection from the supplier record target field. By disabling field mapping, both sync upon create and sync upon update will be disabled.</p>
+
+    <section class="grid" aria-label="Field mapping">
+      <div class="erp-bar">
+        <span id="erp-status" class="erp-status" role="status" aria-live="polite"></span>
+        <button id="sync-all" class="btn-secondary" type="button">Sync All with ERP</button>
+      </div>
+      <div id="banner" class="banner" role="status" hidden>
+        <span id="banner-text"></span>
+        <button id="banner-close" class="banner-close" aria-label="Close message">&times;</button>
+      </div>
+      <div class="grid-toolbar">
+        <label for="view">View</label>
+        <select id="view">
+          <option value="all">All</option>
+          <option value="create">Sync Upon Create</option>
+          <option value="update">Sync Upon Update</option>
+        </select>
+        <div class="search">
+          <input id="search" type="text" placeholder="Search" aria-label="Search">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="14" cy="10" r="6" fill="#fff" stroke="#2f7fc1" stroke-width="2.5"/><path d="m9.5 14.5-6 6" stroke="#f0a030" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th class="c-supplier">Supplier Field</th>
+            <th class="c-sim">SIM Field</th>
+            <th class="c-create">Sync Upon Create</th>
+            <th class="c-update">Sync Upon Update</th>
+            <th class="c-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+
+      <div class="grid-footer">
+        <div class="per-page">
+          <span>Per page</span>
+          <a href="#">15</a><i>|</i><a href="#">45</a><i>|</i><a href="#">90</a>
+          <a href="#">Show Count</a>
+        </div>
+        <div class="pager">
+          <span class="pg disabled">Prev</span>
+          <input class="pg current" value="1" aria-label="Current page">
+          <a class="pg" href="#">2</a>
+          <a class="pg" href="#">3</a>
+          <span class="pg ellipsis">…</span>
+          <a class="pg next" href="#">Next</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <script src="script.js"></script>
+</body>
+</html>
