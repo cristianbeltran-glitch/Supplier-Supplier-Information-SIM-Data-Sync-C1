@@ -1,0 +1,33 @@
+assets/icon-sync-create-disabled.svg
+  s_17623f466fbe8e::t_57319ae11df629 1-10
+assets/icon-sync-create.svg
+  s_17623f466fbe8e::t_d6f2f3a92e9f55 1-10
+assets/icon-sync-erp.svg
+  s_17623f466fbe8e::t_8907189675e9e4 1-7
+assets/icon-sync-update-disabled.svg
+  s_17623f466fbe8e::t_a13698f70a44e1 1-8
+assets/icon-sync-update.svg
+  s_17623f466fbe8e::t_96931af0fd857b 1-17
+index.html
+  s_17623f466fbe8e::t_46acf9573c0c9f 1-114
+script.js
+  s_17623f466fbe8e::t_ce8f7eb994147a 1-171
+styles.css
+  s_17623f466fbe8e::t_88cc210ce5ede2 1-157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4d99a34a1c6b605201cc50ebf2346b495ca1ff8b",
+  "prompts": {},
+  "sessions": {
+    "s_17623f466fbe8e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "891451c7-b2a5-4ed2-a1c2-110700a6f497",
+        "model": "unknown"
+      },
+      "human_author": "cristianbeltran-glitch <cristianbeltran-glitch@users.noreply.github.com>"
+    }
+  }
+}
